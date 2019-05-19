@@ -1,0 +1,139 @@
+\newif\ifvimbug
+\vimbugfalse
+
+\ifvimbug
+\begin{document}
+\fi
+Zehua, Gong, Jiyang, Yu, 2386544;
+\exercise{Linear Algebra Refresher}
+ 
+
+
+
+%----------------------------------------------
+
+\begin{question}{Matrix Properties}{5}
+A colleague of yours suggests matrix addition and multiplication are similar to scalars, thus commutative, distributive and associative properties can be applied.
+Prove if matrix addition and multiplication are commutative and associative analytically or give counterexamples. 
+Is matrix multiplication distributive with respect to matrix addition? 
+Again, prove it analytically or give a counterexample.
+Considering three matrices $ A, B, C$ of size $n\times n$.
+
+\end{question}
+\begin{answer}
+\linebreak
+\textbf{\textit{Answer:}}\\
+For matrix addition, we assume two matrix $A, B ,C $with the same dimension $n\times n $, for each element  $a_{ij}$, $b_{ij}$ and $c_{ij}$ in $A, B,C$ respectively. $$a_{ij}+b_{ij} = b_{ij}+a_{ij}$$ which means the associative property is correct. Which means for the matrix $A,B$, we have :
+$$A+B= B+A$$
+\linebreak
+And for commutative property of addition, we can perform the matrix addition also as element wise addition. which for the element at three matrix with the same index should have the relation:
+$$a_{ij}+(b_{ij}+c_{ij}) = (a_{ij}+b_{ij})+c_{ij}$$
+which means for the matrix:
+$$A+(B+C) = (A+B)+C$$
+\linebreak
+But for matrix multiplication, assume we also have three matrix with the dimension$n\times n$
+$$C=A*B$$
+$$c_{ij} = \sum_{k=1}^n a_{ik}\times b_{kj}$$
+Assume that the matrix multiplication also have the commutative property which means the equal below is also correct for all matrix.
+$$c_{ij} = \sum_{k=1}^n b_{ik}\times a_{kj}$$
+we can't make sure that all the element wise multiplication of $i_{th}$ row of A and $j_{th} $column of B is the same as  $i_{th}$ row of B and$ j_{th}$ column of A. Which can be proved that matrix multiplication don't have the commutative property
+but matrix multiplication has the associative property. which is :
+$$A\times (B\times C) = (A\times B) \times C$$
+assume $$D = A\times B\times C$$
+$$d_{ij} = \sum_{l=1}^n(\sum_{k=1}^n a_{ik}\times b_{kl}) \times c_{lj} = \sum_{k=1}^n a_{ik}\times (\sum_{l=1}^n b_{kl}\times c_{lj}) $$
+\linebreak
+Also for the distribution property we have:
+$$A\times (B+C) = A\times B + A \times C$$
+Prove is below:
+$$D = A\times (B+C)$$
+for each element in D we say it's $d_{ij}$
+$$d_{ij} = \sum_{k=1}^n a_{ik} \times (b_{kj}+c_{kj}) = \sum_{k=1}^n a_{ik} \times b_{kj})  + \sum_{k=1}^n a_{ik} \times c_{kj}$$
+for each element in D can be calculated using the equation above which means the matrix have the distributive property.
+
+
+\end{answer}
+
+
+%----------------------------------------------
+
+\begin{question}{Matrix Inversion}{6}
+Given the following matrix 
+\begin{equation*}
+     A = ( \begin{array}{c c c} 
+     1 & 2 & 3 \\
+     1 & 2 & 4 \\
+     1 & 4 & 5 \end{array} )
+\end{equation*}
+analytically compute its inverse $ A^{-1}$ and illustrate the steps.
+
+
+If we change the matrix in
+\begin{equation*}
+     A = ( \begin{array}{c c c} 
+     1 & 2 & 3 \\
+     1 & 2 & 4 \\
+     1 & 2 & 5 \end{array} )
+\end{equation*}
+is it still invertible? Why?
+
+\begin{answer}
+a. For the first we know the equation 
+$$A^{-1} = \frac{1}{det(A)C_T}$$
+first calculate the determinant of A which equals to -2. 
+second calculate the transpose of A
+\begin{equation*}
+     A = ( \begin{array}{c c c} 
+     1 & 1 & 1 \\
+     2 & 2 & 4 \\
+     3 & 4 & 5 \end{array} )
+\end{equation*}
+for each element in the $A^T$ calculate the cofactor. and replace the element at index $A_{ij}$ with its cofactor. And if i+j is odd, multiply -1 to the cofactor.
+b. This matrix is not invertible. Because the determinant of this matrix equals 0.
+
+\end{answer}
+
+\end{question}
+	
+%----------------------------------------------
+
+\begin{question}{Matrix Pseudoinverse}{3}
+	Write the definition of the right and left Moore-Penrose pseudoinverse of a generic matrix $A \in \R^{n\times m}$.
+	
+	Given $A \in \R^{2 \times 3}$, which one does exist? Write down the equation for computing it, specifying the dimensionality of the matrices in the intermediate steps.
+	
+\begin{answer}
+Left-pseudo inverse
+$$A^{\#}A = (A^TA)^{-1}A^TA = (A^TA)^{-1}A^T) A = I_m$$
+Right-pseudo inverse
+$$A A^{\#} = AA^T(AA^T)^{-1} = A(A^T(AA^T)^{-1} ) = I_n$$
+
+
+for a matrix with dimension $2\times 3$ the left pseudo inverse doesn't exist.
+for $A\in \Re^{2\times 3} $ \\
+1. calculate the transpose of $A$ to $A^T$
+1. calculate $AA^T$ which has the dimension $2\times 2$\\
+2. calculate the inverse  $(AA^T)^{-1}$ which also has the dimension $2\times 2$\\
+3. at last we got the right-pseudo inverse $A(A^T(AA^T)^{-1}) = I_2$
+
+\end{answer}
+\end{question}
+
+%----------------------------------------------
+
+\begin{question}{Eigenvectors \& Eigenvalues}{6}
+What are eigenvectors and eigenvalues of a matrix $A$? Briefly explain why they are important in Machine Learning.
+
+\begin{answer}
+Some vector only change there length after muliplying with an matrix. we call these vectors are eigenvectors, and the scalar factor is the engenvalue for the corresponding matirx.
+$$Av = \lambda v$$ 
+Eigentvector are defined as particular of the matrix A.\\
+
+For the space with n dimensions, if there are n eigenvectors, means using the n eigenvectors we can represents all the vector in the n-dimensional space. which means in machine learning we can use these as the figures to estimate if an input inside this range. We can use the eigenvectors and eigenvalues in machine learning algorithms to reduce the gradient.
+
+\end{answer}
+
+\end{question}
+
+%----------------------------------------------
+
+\end{questions}
