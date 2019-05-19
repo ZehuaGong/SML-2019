@@ -1,0 +1,171 @@
+\newif\ifvimbug
+\vimbugfalse
+
+\ifvimbug
+\begin{document}
+\fi
+
+\exercise{Statistics Refresher}
+ 
+
+\begin{questions}
+
+%----------------------------------------------
+
+\begin{question}{Expectation and Variance}{8}
+Let $\Omega$ be a finite set and $P:\Omega\rightarrow\R$ a probability measure that (by definition) satisfies $P(\omega)\geq0$ for all $\omega\in\Omega$ and $\sum_{\omega\in\Omega}P(\omega)=1$. 
+Let $f:\Omega\rightarrow\R$ be an arbitrary function on $\Omega$.
+
+\textbf{1)} Write the definition of expectation and variance of $f$ and discuss if they are linear operators.
+
+\textbf{2)} You are given a set of three dices $\{A,B,C\}$.
+The following table describes the outcome of six rollouts for these dices, where each column shows the outcome of the respective dice. 
+(Note: assume the dices are standard six-sided dices with values between 1-6)
+\begin{equation*}
+\begin{array}{r|cccccc}
+    A & 4 & 4 & 2 & 4 & 1 & 1 \\
+    \hline
+    B & 3 & 6 & 3 & 3 & 4 & 3 \\
+    \hline
+    C & 5 & 5 & 2 & 1 & 1 & 1 
+\end{array}
+\end{equation*}
+Estimate the expectation and the variance for each dice using unbiased estimators. (Show your computations).
+
+\textbf{3)} According to the data, which of them is the ``most rigged''? Why?
+
+\begin{answer}
+\textbf{ANSWER}\\
+
+1). 
+From the description given we can imagine that the set $\Omega$ is a discrete set which for each element $\omega$ in the set $\Omega$ has the corresponding probability $P(\omega)$. we assume the function of $f$ is $f(\omega)$, so the expectation will be :
+$$E(f(\omega)) = \sum_{\omega \in \Omega}f(\omega)P(\omega)$$
+and the variance of $f(\omega)$ is :
+$$Var(f(\omega)) = E(f(\omega)- E(f(\omega)))^2$$
+Because all the element in the set $\Omega$ is discrete, which means the expectation calculation is linear, but the variance calculation consists of the square, which is nonlinear.
+
+2).
+For dices there are six number which are $1,2,3,4,5,6$, the probability of showing each number is equal. Means it's an unit distribution and $P = \frac{1}{6}$. \\
+The expectation and variance of dice is :
+$$E(dice) = \sum_{i = 1}^6 \frac{1}{6 }i = \frac{7}{2}$$
+For dice A:
+$$\overline{ X}_{A} = \sum_{i=1}^6 \frac{1}{6}x_i = \frac{4}{6}+\frac{4}{6}+\frac{2}{6}+\frac{4}{6}+ 2* \frac{1}{6} = \frac{8}{3}$$
+$$S_A^2 =\frac{1}{n-1}\sum_{i=1}^6 (x_i-\overline{X}_A)^2 = \frac{1}{5}((\frac{4}{3})^2*3+ (\frac{2}{3})^2+ (\frac{5}{3})^2*2 )= 2.27$$
+For dice B:
+$$\overline{ X}_{B} = \sum_{i=1}^6 \frac{1}{6}x_i = \frac{3}{6}+\frac{6}{6}+\frac{3}{6}+\frac{3}{6}+ \frac{4}{6} + \frac{3}{6} = \frac{11}{3}$$
+$$S_B^2 =\frac{1}{n-1}\sum_{i=1}^6 (x_i-\overline{X}_B)^2 = \frac{1}{5}((\frac{2}{3})^2*4+ (\frac{7}{3})^2+ (\frac{1}{3})^2) = 1.46$$
+
+For dice C:
+$$\overline{ X}_{C} = \sum_{i=1}^6 \frac{1}{6}x_i = \frac{5}{6}*2+\frac{2}{6}+\frac{1}{6}*3 = \frac{5}{3}$$
+$$S_C^2 =\frac{1}{n-1}\sum_{i=1}^6 (x_i-\overline{X}_C)^2 = \frac{1}{5}((\frac{10}{3})^2*4+ (\frac{1}{3})^2+ (\frac{2}{3})^2*3) = 4.73$$
+
+c).
+Since the dice C has the most larger Variance and also the expectation of c with respect to the $E(dice)$ is also the largest. Therefore the dice c is most rigged.
+
+
+\end{answer}
+
+\end{question}
+\newpage
+%----------------------------------------------
+
+\begin{question}{It is a Cold World}{7}
+Consider the following three statements:
+\\
+a) A person with a cold has backpain $24\%$ of the time.
+\\
+b) $5\%$ of the world population has a cold.
+\\
+c) $12\%$ of those who do not have a cold, still have backpain.
+
+\textbf{1)} Identify random variables from the statements above and define a unique symbol for each of them.\\
+\textbf{2)} Define the domain of each random variable.\\
+\textbf{3)} Represent the three statements above with your random variables.\\
+\textbf{4)} If you suffer from backpain, what are the chances that you suffer from a cold? (Show all the intermediate steps.)
+
+\begin{answer}
+\textbf{ANSWER}\\
+1)\\
+"cold" represents the people get colded,\\
+"backpain" represents the people has backpain,\\
+2)\\
+The domain of cold and backpain are the whole population. Means no matter if one person get cold or have backpain, they all belong to the same world.\\
+3)\\
+statement a) : $P(backpain | cold) = 24\%$ \\
+statement b): $P(cold) = 5\%$ \\
+statement c): $P(backpain) = 12\%$
+
+4)\\
+Calculation:\\
+ $$P(cold | backpain) =\frac{P(backpain, cold)}{P(backpain)} = \frac{P(cold)*P(backpain | cold)}{P(backpain)} = \frac{0.24 * 0.05}{0.12} =  10\%$$
+
+\end{answer}
+
+\end{question}
+
+\newpage
+%----------------------------------------------
+
+\begin{question}{Journey to THX1138}{10}
+	After the success of the \href{http://rosetta.esa.int/}{Rosetta mission}, ESA decided to send a spaceship to rendezvous with the comet THX1138. 
+	This spacecraft consists of four independent subsystems $A,B,C,D$. 
+	Each subsystem has a probability of failing during the journey equal to $1/3$. 
+	\\
+	1) What is the probability of the spacecraft $S$ to be in working condition (i.e., all subsystems are operational at the same time) at the rendezvous?
+	\\
+	2) Given that the spacecraft $S$ is not operating properly, compute	analytically the probability that \textbf{only} subsystem $A$ has failed. 
+	\\
+	3) Instead of computing the probability analytically, do a simple simulation experiment and compare the result to the previous solution. 
+	Include a snippet of your code. 
+	\\
+	4) An improved spacecraft version has been designed.
+	The new spacecraft fails if the critical subsystem $A$ fails, or any two subsystems of the remaining $B,C,D$ fail. 
+	What is the probability that \textbf{only} subsystem $A$ has failed, given that the spacecraft $S$ is failing? 
+	
+	
+\begin{answer}
+\textbf{ANSWER}\\
+1)\\
+SInce all the subsystems work well which means the probability of all the subsystem should be $\frac{3}{4}$ So the total probability should be :
+$$P_{well} = (\frac{2}{3})^4 = \frac{16}{81}$$
+2)\\
+The probability that all the subsystem work properly is:
+$$P(well) = (\frac{2}{3})^4 = \frac{16}{18}$$
+So the probability that the spaceship doesn't work properly is $P(spaceship\_fail) = 1-P(spaceship\_well) = \frac{65}{81}$
+The propability that only subsystem isn't working properly is :
+$$P(A\_fail) = P_A(fail) * P_B(well) * P_C(well) * P_D(well) = \frac{1}{3}* (\frac{2}{3})^3 = \frac{8}{81}$$
+Therefore we need to calculate the probability that if the whole spaceship doesn't work properly and the reason is only A is broken. which is $P(A\_fail | spaceship\_fail)$
+
+$$P(A\_fail | spaceship\_fail) = \frac{P(A\_fail)}{P(spaceship\_fail)} = \frac{8}{65}$$
+
+3)\\
+\begin{code}
+import numpy as np \\
+time = 100000\\
+system = []\\
+ans = []\\
+A = np.random.binomial(1,1/3, time)\\
+B = np.random.binomial(1,1/3, time)\\
+C = np.random.binomial(1,1/3, time)\\
+D = np.random.binomial(1,1/3, time)\\
+for i in range(len(A)):\\
+    if A[i]==1 or B[i]==1 or C[i]==1 or D[i] ==1:\\
+        system.append(1)\\
+    if A[i]==1 and B[i]!=1 and C[i]!=1 and D[i] !=1:\\
+        ans.append(1)\\
+p = sum(ans) / sum(system)\\
+\end{code}
+
+4)\\
+$$P(spacecraft\_fail) = \frac{1}{3}*(\frac{2}{3})^2 + \frac{2}{3}* 3*(\frac{1}{3})^2*\frac{2}{3}= \frac{8}{9}$$
+$$P_A(fail) = \frac{1}{3}*(\frac{2}{3})^3 = \frac{8}{81}$$
+so the final result will be 
+
+$$P(A\_fail | spacecraft\_fail) =\frac{1}{9} $$
+
+\end{answer}
+	
+\end{question}
+
+
+\end{questions}
